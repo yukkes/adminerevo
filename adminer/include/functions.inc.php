@@ -154,6 +154,9 @@ function target_blank() {
 * @return string
 */
 function h($string) {
+	if ($string instanceof OCILob) {
+		$string = $string->load();
+  }
 	return str_replace("\0", "&#0;", htmlspecialchars($string, ENT_QUOTES, 'utf-8'));
 }
 
